@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.christiantochen.ppjonline.ui.login.LoginViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:mutableVisibility="@{viewModel.isLoading}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        <android.support.constraint.Guideline
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_begin="64dp"
+                android:id="@+id/topGuideline"/>
+
+        <android.support.constraint.Guideline
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_begin="24dp"
+                android:id="@+id/leftGuideline"/>
+
+        <android.support.constraint.Guideline
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_end="24dp"
+                android:id="@+id/rightGuideline"/>
+
+        <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/loginIconImageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/topGuideline"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintBottom_toTopOf="@id/bottomLoginIconGuideline"/>
+
+        <android.support.constraint.Guideline
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_begin="192dp"
+                android:id="@+id/bottomLoginIconGuideline"/>
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/usernameEditTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:textColorHint="@color/colorHint"
+                app:layout_constraintTop_toBottomOf="@id/bottomLoginIconGuideline"
+                app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+                app:layout_constraintRight_toLeftOf="@id/rightGuideline">
+            <EditText
+                    android:id="@+id/usernameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/usernameEditText"
+                    android:text="@={viewModel.username}"
+                    android:inputType="numberSigned"
+                    android:imeOptions="actionNext"
+                    android:nextFocusForward="@id/passwordEditText"
+            />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/passwordEditTextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColorHint="@color/colorHint"
+                app:passwordToggleEnabled = "true"
+                app:passwordToggleTint="@color/colorHint"
+                app:layout_constraintTop_toBottomOf="@id/usernameEditTextInputLayout"
+                app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+                app:layout_constraintRight_toLeftOf="@id/rightGuideline">
+            <EditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/passwordEditText"
+                    android:text="@={viewModel.password}"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionGo|actionSend|actionDone"
+                    app:onEditorEnterAction="@{viewModel::login}"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button android:id="@+id/loginButton"
+                android:text="Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:onClickAction="@{viewModel::login}"
+                app:layout_constraintTop_toBottomOf="@id/passwordEditTextInputLayout"
+                app:layout_constraintRight_toLeftOf="@id/rightGuideline"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
