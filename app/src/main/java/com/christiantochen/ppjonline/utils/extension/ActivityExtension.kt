@@ -2,7 +2,7 @@ package com.christiantochen.ppjonline.utils.extension
 
 import android.app.Activity
 import android.os.Handler
-import android.support.design.widget.Snackbar
+import com.google.android.material.snackbar.Snackbar
 import android.view.View
 
 fun Activity.getRootView(): View {

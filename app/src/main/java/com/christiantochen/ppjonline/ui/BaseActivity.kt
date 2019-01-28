@@ -1,12 +1,11 @@
 package com.christiantochen.ppjonline.ui
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.christiantochen.ppjonline.utils.extension.postDelayed
 import com.christiantochen.ppjonline.utils.extension.showToast
 
 abstract class BaseActivity :
-    AppCompatActivity()
-{
+    AppCompatActivity() {
     private var doubleBackToExitPressedOnce: Boolean = false
     override fun onBackPressed() {
         if (this.doubleBackToExitPressedOnce) {

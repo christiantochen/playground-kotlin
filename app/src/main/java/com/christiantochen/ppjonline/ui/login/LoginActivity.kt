@@ -1,11 +1,11 @@
 package com.christiantochen.ppjonline.ui.login
 
-    import android.arch.lifecycle.Observer
-    import android.arch.lifecycle.ViewModelProviders
     import android.content.Intent
-    import android.databinding.DataBindingUtil
     import android.os.Bundle
     import android.view.View
+    import androidx.databinding.DataBindingUtil
+    import androidx.lifecycle.Observer
+    import androidx.lifecycle.ViewModelProviders
     import com.christiantochen.ppjonline.R
     import com.christiantochen.ppjonline.databinding.ActivityLoginBinding
     import com.christiantochen.ppjonline.ui.BaseActivity
@@ -24,11 +24,19 @@ class LoginActivity : BaseActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        setupViewModel()
+        setupBinding()
+    }
+
+    private fun setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         viewModel.navigateToMainActivity.observe(this, Observer {
             when(it) {
-               true -> this.hideKeyboard().also { navigateToMainActivity() }
+                true -> this.hideKeyboard().also {
+                    finish()
+                }.also {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
             }
         })
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
@@ -42,15 +50,10 @@ class LoginActivity : BaseActivity()
                 else -> loginButton.isEnabled = true
             }
         })
+    }
+
+    private fun setupBinding() {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.viewModel = viewModel
-    }
-
-    private fun navigateToMainActivity() {
-        finish()
-        startActivity(Intent(this, MainActivity::class.java))
-    }
-
-    companion object {
-        const val TAG = "LoginActivity"
     }
 }

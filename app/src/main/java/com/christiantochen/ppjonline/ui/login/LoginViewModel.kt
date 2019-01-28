@@ -1,7 +1,7 @@
 package com.christiantochen.ppjonline.ui.login
 
-import android.arch.lifecycle.MutableLiveData
 import android.view.View
+import androidx.lifecycle.MutableLiveData
 import com.christiantochen.ppjonline.BaseViewModel
 import com.christiantochen.ppjonline.model.LoginRequest
 import com.christiantochen.ppjonline.model.LoginResponse
