@@ -1,4 +1,4 @@
-package com.christiantochen.ppjonline.utils.extension
+package com.christiantochen.learnkotlin.utils.extension
 
 import android.app.Activity
 import android.content.Context
@@ -17,5 +17,5 @@ fun Activity.showToast(text: String) {
 
 fun Context.showToast(text: String) {
     val activity = this as Activity
-    activity.showToast(text);
+    activity.showToast(text)
 }

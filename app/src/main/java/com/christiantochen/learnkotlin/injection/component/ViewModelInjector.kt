@@ -1,7 +1,7 @@
-package com.christiantochen.ppjonline.injection.component
+package com.christiantochen.learnkotlin.injection.component
 
-import com.christiantochen.ppjonline.injection.module.NetworkModule
-import com.christiantochen.ppjonline.ui.login.LoginViewModel
+import com.christiantochen.learnkotlin.injection.module.NetworkModule
+import com.christiantochen.learnkotlin.ui.login.LoginViewModel
 import dagger.Component
 import javax.inject.Singleton
 

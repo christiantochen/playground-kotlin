@@ -1,7 +1,7 @@
-package com.christiantochen.ppjonline.injection.module
+package com.christiantochen.learnkotlin.injection.module
 
-import com.christiantochen.ppjonline.network.LoginApi
-import com.christiantochen.ppjonline.utils.BASE_URL
+import com.christiantochen.learnkotlin.network.LoginApi
+import com.christiantochen.learnkotlin.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
