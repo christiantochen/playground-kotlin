@@ -4,8 +4,11 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="ThemeSplash" parent="AppTheme">
@@ -13,18 +16,24 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <style name="TitleTextAppearance" parent="@style/TextAppearance.AppCompat.Title">
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+    
     <style name="NavigationDrawerStyle">
         <item name="android:textSize">16sp</item><!-- text size in menu-->
         <item name="android:listPreferredItemHeightSmall">56dp</item><!-- item size in menu-->
         <item name="listPreferredItemHeightSmall">56dp</item><!-- item size in menu-->
     </style>
 
-    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="hintTextAppearance">@style/HintText</item>
+        <item name="boxStrokeColor">@color/colorDivider</item>
     </style>
 
-    <style name="HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="android:textColor">@android:color/black</item>
+    <style name="HintText" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 </resources>
