@@ -35,7 +35,7 @@
                               android:orientation="horizontal">
                     <ImageView android:layout_width="48dp"
                                android:layout_height="48dp"
-                               app:imageUrl="@{viewModel.user.employee.display_image}"/>
+                               app:imageUrl="@{viewModel.user.info.display_image}"/>
                     <LinearLayout android:layout_width="match_parent"
                                   android:layout_height="48dp"
                                   android:orientation="vertical"
@@ -45,13 +45,13 @@
                                   android:layout_height="24dp"
                                   android:textSize="16dp"
                                   android:textStyle="bold"
-                                  android:text="@{viewModel.user.employee.full_name}"/>
+                                  android:text="@{viewModel.user.info.full_name}"/>
                         <TextView android:id="@+id/rolename_text_view"
                                   android:layout_width="match_parent"
                                   android:layout_height="24dp"
                                   android:textSize="16dp"
                                   android:textColor="@color/colorTextGray"
-                                  android:text="@{viewModel.user.employee.position_name}"/>
+                                  android:text="@{viewModel.user.info.position_name}"/>
                     </LinearLayout>
                 </LinearLayout>
                 <!-- END OF USER PROFILE -->

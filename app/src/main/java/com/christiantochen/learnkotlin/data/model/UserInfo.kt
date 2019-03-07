@@ -5,7 +5,7 @@ import androidx.room.ForeignKey
 
 
 @Entity(
-    tableName = "users",
+    tableName = "employees",
     primaryKeys = ["id"],
     foreignKeys = [
         ForeignKey(entity = User::class,
@@ -14,7 +14,7 @@ import androidx.room.ForeignKey
             onDelete = ForeignKey.NO_ACTION)
     ]
 )
-data class Employee(
+data class UserInfo(
     var id: Int,
     var nip: String? = null,
     var full_name: String? = null,

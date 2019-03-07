@@ -5,7 +5,7 @@ import androidx.room.ForeignKey
 import java.util.*
 
 @Entity(
-    tableName = "roles",
+    tableName = "tasks",
     primaryKeys = ["id"],
     foreignKeys = [
         ForeignKey(entity = User::class,

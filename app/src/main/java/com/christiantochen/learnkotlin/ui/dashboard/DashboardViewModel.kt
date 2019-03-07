@@ -2,7 +2,7 @@ package com.christiantochen.learnkotlin.ui.dashboard
 
 import androidx.lifecycle.MutableLiveData
 import com.christiantochen.learnkotlin.BaseViewModel
-import com.christiantochen.learnkotlin.data.model.Employee
+import com.christiantochen.learnkotlin.data.model.UserInfo
 import com.christiantochen.learnkotlin.data.model.Task
 import com.christiantochen.learnkotlin.data.model.TaskStatus
 import com.christiantochen.learnkotlin.data.model.User
@@ -19,7 +19,7 @@ class DashboardViewModel :
     init {
         user.value = User(
             id = 1,
-            employee = Employee(
+            info = UserInfo(
                 id = 1,
                 full_name = "Aan Darmawan",
                 position_name = "VMI Officer",

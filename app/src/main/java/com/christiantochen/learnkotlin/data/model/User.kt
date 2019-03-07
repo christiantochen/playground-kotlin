@@ -29,8 +29,8 @@ data class User(
     var role_id: Int? = null,
     var station_id: Int? = null,
     // Relations
-    @Relation(parentColumn = "id", entityColumn = "id", entity = Employee::class)
-    var employee: Employee,
+    @Relation(parentColumn = "id", entityColumn = "id", entity = UserInfo::class)
+    var info: UserInfo,
     @Relation(parentColumn = "id", entityColumn = "user_id", entity = Task::class)
     var tasks: List<Task>
 ) {
