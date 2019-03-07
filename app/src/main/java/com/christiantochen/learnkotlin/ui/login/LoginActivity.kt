@@ -2,6 +2,7 @@ package com.christiantochen.learnkotlin.ui.login
 
     import android.content.Intent
     import android.os.Bundle
+    import android.util.Log
     import android.view.View
     import androidx.databinding.DataBindingUtil
     import androidx.lifecycle.Observer
@@ -24,16 +25,15 @@ class LoginActivity : BaseActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        setupViewModel()
-        setupBinding()
-        setupObserver()
+        initialSetup().also {
+            setupObserver()
+        }
+
+        Log.d(TAG, "onCreate")
     }
 
-    private fun setupViewModel() {
+    private fun initialSetup() {
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-    }
-
-    private fun setupBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.viewModel = viewModel
     }
@@ -59,5 +59,9 @@ class LoginActivity : BaseActivity()
                 else -> loginButton.isEnabled = true
             }
         })
+    }
+
+    companion object {
+        const val TAG: String = "LoginActivity"
     }
 }

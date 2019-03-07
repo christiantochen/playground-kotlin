@@ -1,15 +1,17 @@
 package com.christiantochen.learnkotlin.ui.main
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.view.WindowManager.LayoutParams
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
 import com.christiantochen.learnkotlin.R
 import com.christiantochen.learnkotlin.databinding.ActivityMainBinding
 import com.christiantochen.learnkotlin.ui.BaseActivity
+import com.christiantochen.learnkotlin.ui.dashboard.DashboardFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -17,16 +19,14 @@ import kotlinx.android.synthetic.main.toolbar.*
 class MainActivity : BaseActivity()
 {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        setupDrawer()
-        setupViewModel()
-        setupBinding()
-        setupObserver()
+        initialSetup().also {
+            setupDrawer()
+            setupObserver()
+        }
     }
 
     override fun onBackPressed() {
@@ -37,6 +37,11 @@ class MainActivity : BaseActivity()
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.dashboard_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when(item?.itemId) {
             android.R.id.home -> true.also { drawer_layout.openDrawer(GravityCompat.START) }
@@ -44,31 +49,39 @@ class MainActivity : BaseActivity()
         }
     }
 
+    private fun initialSetup() {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.main_content, DashboardFragment.newInstance())
+            .commit()
+        navigation_view.setCheckedItem(R.id.menu_drawer_dashboard)
+    }
+
     private fun setupDrawer() {
         setSupportActionBar(toolbar)
-//        val actionBar: ActionBar? = supportActionBar
-//        actionBar?.apply {
-//            setHomeAsUpIndicator(R.drawable.baseline_menu_white_24)
-//            setDisplayHomeAsUpEnabled(false)
-//        }
-//        toolbar.setLogo(R.drawable.baseline_menu_white_24)
-//        supportActionBar?.setLogo(R.drawable.baseline_menu_white_24)
-//        val drawerToggle  = ActionBarDrawerToggle(
-//            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-//        drawer_layout.addDrawerListener(drawerToggle)
-//        drawerToggle.isDrawerIndicatorEnabled = true
-//        drawerToggle.setHomeAsUpIndicator(R.drawable.baseline_menu_white_24)
-//        drawer_layout.addDrawerListener(drawerToggle)
-//        drawerToggle.syncState()
-    }
+        supportActionBar?.apply {
+            setHomeAsUpIndicator(R.drawable.baseline_menu_white_24)
+            setDisplayHomeAsUpEnabled(true)
+        }
 
-    private fun setupViewModel() {
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-    }
+        navigation_view.setNavigationItemSelectedListener {
+            val fragment = when(it.itemId) {
+                R.id.menu_drawer_dashboard -> DashboardFragment.newInstance()
+                else -> null
+            }
 
-    private fun setupBinding() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.viewModel = viewModel
+            if(fragment != null) {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.main_content, fragment!!)
+                    .addToBackStack(null)
+                    .commit()
+            }
+
+            true.also { drawer_layout.closeDrawers() }
+        }
     }
 
     private fun setupObserver() {

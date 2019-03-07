@@ -1,4 +1,4 @@
-package com.christiantochen.learnkotlin.model
+package com.christiantochen.learnkotlin.data.remote
 
 open class BaseResponse<T> {
     val message: String? = null

@@ -1,7 +1,7 @@
 package com.christiantochen.learnkotlin.network
 
-import com.christiantochen.learnkotlin.model.LoginRequest
-import com.christiantochen.learnkotlin.model.LoginResponse
+import com.christiantochen.learnkotlin.data.remote.LoginRequest
+import com.christiantochen.learnkotlin.data.remote.LoginResponse
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.POST

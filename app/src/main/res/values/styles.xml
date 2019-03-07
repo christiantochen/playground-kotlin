@@ -7,29 +7,37 @@
         <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
         <item name="colorAccent">@color/colorAccent</item>
 
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
+        <!---->
     </style>
 
-    <style name="ThemeSplash" parent="AppTheme">
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
+    <!---->
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="hintTextAppearance">@style/HintText</item>
+        <item name="boxStrokeColor">@color/colorDivider</item>
     </style>
 
     <style name="TitleTextAppearance" parent="@style/TextAppearance.AppCompat.Title">
         <item name="android:textSize">24sp</item>
         <item name="android:layout_gravity">center_vertical</item>
     </style>
-    
-    <style name="NavigationDrawerStyle">
-        <item name="android:textSize">16sp</item><!-- text size in menu-->
-        <item name="android:listPreferredItemHeightSmall">56dp</item><!-- item size in menu-->
-        <item name="listPreferredItemHeightSmall">56dp</item><!-- item size in menu-->
+
+    <style name="CardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_marginRight">12dp</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardPreventCornerOverlap">false</item>
     </style>
 
-    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="hintTextAppearance">@style/HintText</item>
-        <item name="boxStrokeColor">@color/colorDivider</item>
+    <style name="SelectableCardViewStyle" parent="CardViewStyle">
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <!---->
+
+    <style name="ThemeSplash" parent="AppTheme">
     </style>
 
     <style name="HintText" parent="TextAppearance.MaterialComponents.Subtitle1">
